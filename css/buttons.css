@@ -1,0 +1,190 @@
+/* ============================================================
+   BlessedCelemart — buttons.css
+   Navy primary + Orange action buttons
+   ============================================================ */
+
+.btn {
+  display:         inline-flex;
+  align-items:     center;
+  justify-content: center;
+  gap:             var(--space-2);
+  padding:         0 var(--space-6);
+  min-height:      48px;
+  border-radius:   var(--radius-md);
+  font-family:     var(--font-body);
+  font-size:       var(--text-base);
+  font-weight:     600;
+  line-height:     1;
+  white-space:     nowrap;
+  cursor:          pointer;
+  user-select:     none;
+  touch-action:    manipulation;
+  -webkit-tap-highlight-color: transparent;
+  border:          2px solid transparent;
+  transition:      all var(--transition-fast);
+  position:        relative;
+  overflow:        hidden;
+  text-decoration: none;
+}
+
+.btn:focus-visible { outline: 3px solid var(--color-action); outline-offset: 3px; }
+.btn:disabled, .btn[disabled] { opacity: 0.5; cursor: not-allowed; pointer-events: none; }
+
+/* PRIMARY — Navy (trust, branding) */
+.btn-primary {
+  background: var(--color-primary);
+  color:      white;
+  border-color: var(--color-primary);
+}
+.btn-primary:hover {
+  background:   var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+  transform:    translateY(-1px);
+  box-shadow:   var(--shadow-navy);
+}
+.btn-primary:active { transform: translateY(0); box-shadow: none; }
+
+/* ACTION — Orange (buy now, add to cart, checkout) */
+.btn-action {
+  background:   var(--color-action);
+  color:        white;
+  border-color: var(--color-action);
+}
+.btn-action:hover {
+  background:   var(--color-action-dark);
+  border-color: var(--color-action-dark);
+  transform:    translateY(-1px);
+  box-shadow:   0 6px 20px var(--color-action-glow);
+}
+.btn-action:active { transform: translateY(0); }
+
+/* SECONDARY — bordered navy */
+.btn-secondary {
+  background:   white;
+  color:        var(--color-primary);
+  border-color: var(--color-primary);
+}
+.btn-secondary:hover { background: var(--color-primary-light); }
+
+/* GHOST */
+.btn-ghost {
+  background:   transparent;
+  color:        var(--color-primary);
+  border-color: transparent;
+}
+.btn-ghost:hover { background: var(--color-primary-light); }
+
+/* DANGER */
+.btn-danger {
+  background:   var(--color-danger);
+  color:        white;
+  border-color: var(--color-danger);
+}
+.btn-danger:hover {
+  background: #dc2626;
+  transform:  translateY(-1px);
+}
+
+/* NEUTRAL */
+.btn-neutral {
+  background:   var(--color-bg-tertiary);
+  color:        var(--color-text-secondary);
+  border-color: var(--color-border);
+}
+.btn-neutral:hover { background: var(--color-border); color: var(--color-text-primary); }
+
+/* SIZES */
+.btn-sm  { padding: 0 var(--space-4); min-height: 36px; font-size: var(--text-sm); }
+.btn-md  { padding: 0 var(--space-6); min-height: 48px; font-size: var(--text-base); }
+.btn-lg  { padding: 0 var(--space-8); min-height: 56px; font-size: var(--text-md); }
+.btn-full { width: 100%; justify-content: center; }
+
+.btn-icon {
+  padding: 0; width: 44px; min-height: 44px;
+  border-radius: var(--radius-md); flex-shrink: 0;
+}
+.btn-icon.btn-sm { width: 36px; min-height: 36px; }
+
+/* Loading */
+.btn-loading { color: transparent !important; pointer-events: none; }
+.btn-loading::after {
+  content: ''; position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 18px; height: 18px;
+  border: 2px solid rgba(255,255,255,0.4);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+.btn-secondary.btn-loading::after,
+.btn-ghost.btn-loading::after {
+  border-color: rgba(15,31,61,0.2);
+  border-top-color: var(--color-primary);
+}
+
+/* ADD TO CART — pill, orange */
+.btn-add-to-cart {
+  background:    var(--color-action);
+  color:         white;
+  border-color:  var(--color-action);
+  border-radius: var(--radius-full);
+  font-size:     var(--text-sm);
+  padding:       0 var(--space-5);
+  min-height:    44px;
+}
+.btn-add-to-cart:hover {
+  background:  var(--color-action-dark);
+  transform:   scale(1.04);
+  box-shadow:  0 4px 16px var(--color-action-glow);
+}
+.btn-add-to-cart:active { animation: cart-bounce 0.35s ease-out; }
+.btn-add-to-cart.added  { background: var(--color-success); border-color: var(--color-success); }
+
+/* Checkout pulse — draws eye to main CTA */
+.btn-checkout-pulse { animation: glow-pulse 2.5s ease-in-out infinite; }
+
+/* Quantity stepper */
+.qty-stepper {
+  display: inline-flex; align-items: center;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md); overflow: hidden; height: 48px;
+}
+.qty-btn {
+  display: flex; align-items: center; justify-content: center;
+  width: 48px; height: 100%;
+  background: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+  font-size: var(--text-lg); font-weight: 600;
+  border: none; cursor: pointer;
+  touch-action: manipulation; flex-shrink: 0;
+  transition: background var(--transition-fast), color var(--transition-fast);
+  -webkit-tap-highlight-color: transparent;
+}
+.qty-btn:hover   { background: var(--color-primary-light); color: var(--color-primary); }
+.qty-btn:active  { background: var(--color-border); }
+.qty-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.qty-input {
+  width: 56px; text-align: center;
+  font-family: var(--font-mono); font-weight: 700; font-size: 16px;
+  color: var(--color-text-primary);
+  border-left: 1px solid var(--color-border);
+  border-right: 1px solid var(--color-border);
+  background: white; height: 100%; border-top: none; border-bottom: none;
+}
+.qty-input::-webkit-inner-spin-button,
+.qty-input::-webkit-outer-spin-button { -webkit-appearance: none; }
+.qty-input[type=number] { -moz-appearance: textfield; }
+
+.qty-stepper.large { height: 56px; }
+.qty-stepper.large .qty-btn   { width: 56px; font-size: var(--text-xl); }
+.qty-stepper.large .qty-input { width: 64px; font-size: 18px; }
+
+/* Kill hover transforms on touch to avoid sticky states */
+@media (hover: none) {
+  .btn:hover          { transform: none; box-shadow: none; }
+  .btn-primary:hover  { background: var(--color-primary); }
+  .btn-action:hover   { background: var(--color-action); box-shadow: none; }
+  .btn-secondary:hover { background: white; }
+  .btn-add-to-cart:hover { transform: none; box-shadow: none; }
+}

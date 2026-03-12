@@ -1,0 +1,12 @@
+{
+  "name": "blessedcelemart",
+  "version": "1.0.0",
+  "description": "BlessedCelemart Supermarket E-Commerce Web App",
+  "scripts": {
+    "start": "npx live-server --port=3000 --host=localhost --open=index.html",
+    "dev": "npx live-server --port=3000 --host=localhost --open=index.html"
+  },
+  "keywords": ["supermarket", "ecommerce", "nigeria", "abuja"],
+  "author": "BlessedCelemart",
+  "license": "ISC"
+}

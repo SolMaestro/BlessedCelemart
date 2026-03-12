@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="BlessedCelemart — Fresh groceries delivered fast in Abuja" />
+  <title>BlessedCelemart — Fresh Groceries Delivered in Abuja</title>
+
+  <link rel="stylesheet" href="css/globals.css" />
+  <link rel="stylesheet" href="css/typography.css" />
+  <link rel="stylesheet" href="css/buttons.css" />
+  <link rel="stylesheet" href="css/header.css" />
+  <link rel="stylesheet" href="css/mobile-nav.css" />
+
+  <style>
+    /* ── Placeholder hero ──────────────────────────────────── */
+    .hero-placeholder {
+      min-height: 72vh;
+      background: linear-gradient(145deg, #0f1f3d 0%, #1a3260 55%, #0f1f3d 100%);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding: var(--space-12) var(--space-4);
+      gap: var(--space-5); position: relative; overflow: hidden;
+    }
+
+    /* Decorative background circles */
+    .hero-placeholder::before {
+      content: ''; position: absolute;
+      width: 500px; height: 500px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(249,115,22,0.12) 0%, transparent 70%);
+      top: -100px; right: -100px; pointer-events: none;
+    }
+    .hero-placeholder::after {
+      content: ''; position: absolute;
+      width: 350px; height: 350px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(251,191,36,0.08) 0%, transparent 70%);
+      bottom: -80px; left: -60px; pointer-events: none;
+    }
+
+    .hero-label {
+      font-size: var(--text-sm); font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--color-accent);
+      background: rgba(251,191,36,0.12);
+      padding: var(--space-2) var(--space-4);
+      border-radius: var(--radius-full);
+      border: 1px solid rgba(251,191,36,0.25);
+      position: relative; z-index: 1;
+    }
+
+    .hero-placeholder h1 {
+      color: white; font-size: clamp(2rem, 6vw, 3.5rem);
+      max-width: 680px; line-height: 1.1; position: relative; z-index: 1;
+    }
+    .hero-placeholder h1 span { color: var(--color-action); }
+
+    .hero-placeholder p {
+      color: rgba(255,255,255,0.7); max-width: 480px;
+      font-size: var(--text-md); position: relative; z-index: 1;
+    }
+
+    .hero-btns {
+      display: flex; gap: var(--space-3); flex-wrap: wrap;
+      justify-content: center; position: relative; z-index: 1;
+    }
+
+    /* Trust bar */
+    .trust-bar {
+      background: var(--color-bg-secondary);
+      border-bottom: 1px solid var(--color-border);
+      padding: var(--space-3) 0;
+    }
+    .trust-bar .container {
+      display: flex; align-items: center;
+      justify-content: center; gap: var(--space-8); flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex; align-items: center; gap: var(--space-2);
+      font-size: var(--text-sm); font-weight: 600;
+      color: var(--color-text-secondary); white-space: nowrap;
+    }
+    .trust-icon { font-size: 1.2rem; }
+
+    /* Demo test card */
+    .demo-card {
+      margin: var(--space-12) auto var(--space-8);
+      max-width: 440px; padding: var(--space-6);
+      background: white; border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-hover);
+      border: 1px solid var(--color-border);
+      text-align: center;
+    }
+    .demo-card h3 { font-size: var(--text-lg); margin-bottom: var(--space-2); }
+    .demo-card p  { font-size: var(--text-sm); margin-bottom: var(--space-5); }
+    .demo-btns    { display: flex; gap: var(--space-3); justify-content: center; flex-wrap: wrap; }
+    .demo-hint    { font-size: var(--text-xs); color: var(--color-text-muted); margin-top: var(--space-3); }
+
+    /* Phase banner */
+    .phase-banner {
+      background: var(--color-primary);
+      color: rgba(255,255,255,0.85);
+      text-align: center; padding: var(--space-3) var(--space-4);
+      font-size: var(--text-sm); font-weight: 500;
+    }
+    .phase-banner strong { color: var(--color-accent); }
+  </style>
+</head>
+<body>
+
+  <!-- ── OVERLAY ─────────────────────────────────────────────── -->
+  <div class="nav-overlay" aria-hidden="true"></div>
+
+  <!-- ── MOBILE DRAWER ───────────────────────────────────────── -->
+  <nav class="mobile-drawer" aria-label="Mobile navigation">
+
+    <div class="drawer-header">
+      <div class="drawer-user">
+        <div class="drawer-avatar">G</div>
+        <div>
+          <div class="drawer-user-name">Hello, Guest</div>
+          <div class="drawer-user-sub">Sign in for the best prices</div>
+        </div>
+      </div>
+      <button class="drawer-close" aria-label="Close menu">✕</button>
+    </div>
+
+    <div class="drawer-search">
+      <div class="drawer-search-wrap">
+        <span class="drawer-search-icon">🔍</span>
+        <input class="drawer-search-input" type="search"
+          placeholder="Search rice, chicken, bread..." autocomplete="off" enterkeyhint="search" />
+      </div>
+    </div>
+
+    <div class="drawer-body">
+
+      <div class="drawer-section">
+        <div class="drawer-section-title">Categories</div>
+        <a href="pages/shop.html?cat=fruits"     class="drawer-nav-link"><span class="drawer-nav-icon">🥦</span><span class="drawer-nav-label">Fruits &amp; Vegetables</span><span class="drawer-nav-arrow">›</span></a>
+        <a href="pages/shop.html?cat=meat"       class="drawer-nav-link"><span class="drawer-nav-icon">🍗</span><span class="drawer-nav-label">Meat &amp; Poultry</span><span class="drawer-nav-arrow">›</span></a>
+        <a href="pages/shop.html?cat=fish"       class="drawer-nav-link"><span class="drawer-nav-icon">🐟</span><span class="drawer-nav-label">Fish &amp; Seafood</span><span class="drawer-nav-arrow">›</span></a>
+        <a href="pages/shop.html?cat=dairy"      class="drawer-nav-link"><span class="drawer-nav-icon">🥛</span><span class="drawer-nav-label">Dairy &amp; Eggs</span><span class="drawer-nav-arrow">›</span></a>
+        <a href="pages/shop.html?cat=bakery"     class="drawer-nav-link"><span class="drawer-nav-icon">🍞</span><span class="drawer-nav-label">Bakery &amp; Bread</span><span class="drawer-nav-arrow">›</span></a>
+        <a href="pages/shop.html?cat=rice"       class="drawer-nav-link"><span class="drawer-nav-icon">🌾</span><span class="drawer-nav-label">Rice &amp; Grains</span><span class="drawer-nav-arrow">›</span></a>
+        <a href="pages/shop.html?cat=beverages"  class="drawer-nav-link"><span class="drawer-nav-icon">🥤</span><span class="drawer-nav-label">Beverages</span><span class="drawer-nav-arrow">›</span></a>
+        <a href="pages/shop.html?cat=snacks"     class="drawer-nav-link"><span class="drawer-nav-icon">🍿</span><span class="drawer-nav-label">Snacks</span><span class="drawer-nav-arrow">›</span></a>
+        <a href="pages/shop.html?cat=household"  class="drawer-nav-link"><span class="drawer-nav-icon">🏠</span><span class="drawer-nav-label">Household</span><span class="drawer-nav-arrow">›</span></a>
+        <a href="pages/shop.html" class="drawer-nav-link" style="color:var(--color-action);font-weight:700;">
+          <span class="drawer-nav-icon">🛒</span><span class="drawer-nav-label">See All Products</span><span class="drawer-nav-arrow">›</span>
+        </a>
+      </div>
+
+      <div class="drawer-section">
+        <div class="drawer-section-title">My Account</div>
+        <a href="#" class="drawer-nav-link"><span class="drawer-nav-icon">👤</span><span class="drawer-nav-label">Sign In / Register</span><span class="drawer-nav-arrow">›</span></a>
+        <a href="#" class="drawer-nav-link"><span class="drawer-nav-icon">📦</span><span class="drawer-nav-label">My Orders</span></a>
+        <a href="pages/tracking.html" class="drawer-nav-link"><span class="drawer-nav-icon">📍</span><span class="drawer-nav-label">Track Order</span></a>
+      </div>
+
+      <div class="drawer-section">
+        <div class="drawer-section-title">Help</div>
+        <a href="#" class="drawer-nav-link"><span class="drawer-nav-icon">❓</span><span class="drawer-nav-label">FAQ</span></a>
+        <a href="#" class="drawer-nav-link"><span class="drawer-nav-icon">💬</span><span class="drawer-nav-label">Contact Us</span></a>
+        <a href="#" class="drawer-nav-link"><span class="drawer-nav-icon">🔄</span><span class="drawer-nav-label">Returns &amp; Refunds</span></a>
+      </div>
+
+    </div>
+
+    <div class="drawer-footer">
+      <div class="drawer-contact">
+        <span>📞</span><span>Call: <a href="tel:+2348000000000">0800-BLESSED</a></span>
+      </div>
+      <div class="drawer-contact">
+        <span>💬</span><span>WhatsApp: <a href="https://wa.me/2348000000000">Chat with us</a></span>
+      </div>
+      <div class="drawer-version">BlessedCelemart · Abuja · v1.0</div>
+    </div>
+
+  </nav>
+
+  <!-- ── MOBILE SEARCH OVERLAY ───────────────────────────────── -->
+  <div class="search-overlay" role="search" aria-label="Search">
+    <div class="search-overlay-header">
+      <button class="search-overlay-back" aria-label="Close search">←</button>
+      <input class="search-overlay-input" type="search"
+        placeholder="Search rice, chicken, bread..." autocomplete="off" enterkeyhint="search" />
+    </div>
+    <div class="search-overlay-body">
+      <div class="search-suggestions-title">Popular Right Now</div>
+      <div class="search-chip-row">
+        <button class="search-chip">Fresh tomatoes</button>
+        <button class="search-chip">Chicken</button>
+        <button class="search-chip">Rice 50kg</button>
+        <button class="search-chip">Indomie</button>
+        <button class="search-chip">Palm oil</button>
+        <button class="search-chip">Eggs tray</button>
+        <button class="search-chip">Peak Milk</button>
+        <button class="search-chip">Croaker fish</button>
+      </div>
+      <div class="search-suggestions-title">Browse Categories</div>
+      <div class="search-chip-row">
+        <button class="search-chip">🥦 Vegetables</button>
+        <button class="search-chip">🍗 Poultry</button>
+        <button class="search-chip">🐟 Seafood</button>
+        <button class="search-chip">🥛 Dairy</button>
+        <button class="search-chip">🍞 Bakery</button>
+        <button class="search-chip">🥤 Beverages</button>
+        <button class="search-chip">🌾 Grains</button>
+        <button class="search-chip">🏠 Household</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!--  SITE HEADER                                              -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <header class="site-header" role="banner">
+
+    <!-- Top promo bar — desktop -->
+    <div class="header-topbar">
+      <div class="container">
+        <div class="topbar-left">
+          <span>🚚 Free delivery on orders over <span class="topbar-highlight">₦15,000</span> · Abuja same-day available</span>
+        </div>
+        <div class="topbar-right">
+          <span>📞 0800-BLESSED</span>
+          <div class="topbar-divider"></div>
+          <a href="#">Sign In</a>
+          <div class="topbar-divider"></div>
+          <a href="#">Create Account</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main header row — NAVY background -->
+    <div class="header-main">
+      <div class="container">
+
+        <!-- Logo -->
+        <a href="index.html" class="header-logo" aria-label="BlessedCelemart Home">
+          <div class="logo-icon">🛒</div>
+          <div>
+            <span class="logo-text">Blessed<span class="logo-accent">Celemart</span></span>
+            <span class="logo-tagline">Abuja's Fresh Market</span>
+          </div>
+        </a>
+
+        <!-- Search bar — desktop -->
+        <div class="header-search">
+          <form class="header-search-form" role="search">
+            <span class="search-icon-left">🔍</span>
+            <input class="header-search-input" type="search" name="q"
+              placeholder="Search for rice, chicken, fresh tomatoes..."
+              autocomplete="off" aria-label="Search products" />
+            <button class="header-search-btn" type="submit">Search</button>
+          </form>
+        </div>
+
+        <!-- Right actions -->
+        <div class="header-actions">
+
+          <!-- Mobile search icon -->
+          <button class="header-action-btn header-search-toggle" aria-label="Search">🔍</button>
+
+          <!-- Cart -->
+          <a href="pages/cart.html" class="header-action-btn" aria-label="Cart">
+            🛒
+            <span class="action-badge" data-count="0" aria-label="items in cart">0</span>
+          </a>
+
+          <!-- User / Sign In -->
+          <a href="#" class="header-user-btn" aria-label="My Account">
+            <div class="user-avatar">G</div>
+            <span class="user-label">Sign In</span>
+          </a>
+
+          <!-- Hamburger — mobile only -->
+          <button class="header-hamburger" aria-label="Open menu" aria-expanded="false">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Category chips bar — white bg -->
+    <nav class="header-categories" aria-label="Product categories">
+      <div class="container">
+        <div class="categories-scroll">
+          <a href="pages/shop.html?cat=all"       class="category-chip active"><span class="chip-icon">🏪</span> All Products</a>
+          <a href="pages/shop.html?cat=fruits"    class="category-chip"><span class="chip-icon">🥦</span> Fruits &amp; Veg</a>
+          <a href="pages/shop.html?cat=meat"      class="category-chip"><span class="chip-icon">🍗</span> Meat &amp; Poultry</a>
+          <a href="pages/shop.html?cat=fish"      class="category-chip"><span class="chip-icon">🐟</span> Fish &amp; Seafood</a>
+          <a href="pages/shop.html?cat=dairy"     class="category-chip"><span class="chip-icon">🥛</span> Dairy &amp; Eggs</a>
+          <a href="pages/shop.html?cat=bakery"    class="category-chip"><span class="chip-icon">🍞</span> Bakery</a>
+          <a href="pages/shop.html?cat=rice"      class="category-chip"><span class="chip-icon">🌾</span> Rice &amp; Grains</a>
+          <a href="pages/shop.html?cat=beverages" class="category-chip"><span class="chip-icon">🥤</span> Beverages</a>
+          <a href="pages/shop.html?cat=snacks"    class="category-chip"><span class="chip-icon">🍿</span> Snacks</a>
+          <a href="pages/shop.html?cat=household" class="category-chip"><span class="chip-icon">🏠</span> Household</a>
+          <a href="pages/shop.html?cat=personal"  class="category-chip"><span class="chip-icon">🧴</span> Personal Care</a>
+        </div>
+      </div>
+    </nav>
+
+  </header>
+
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <!--  MAIN CONTENT                                             -->
+  <!-- ══════════════════════════════════════════════════════════ -->
+  <main>
+
+    <!-- Phase banner -->
+    <div class="phase-banner">
+      <strong>Phase 2 Complete</strong> — Premium Navy + Orange header built. Phase 3 (Homepage hero, categories, product cards) is next.
+    </div>
+
+    <!-- Hero placeholder -->
+    <section class="hero-placeholder">
+      <span class="hero-label">🏪 Abuja's #1 Online Supermarket</span>
+      <h1>Fresh Groceries,<br /><span>Delivered Fast</span></h1>
+      <p>Shop thousands of fresh products and get them delivered to your door anywhere in Abuja — same day.</p>
+      <div class="hero-btns">
+        <a href="pages/shop.html" class="btn btn-action btn-lg">🛒 Shop Now</a>
+        <a href="#" class="btn btn-lg" style="background:rgba(255,255,255,0.12);color:white;border:1.5px solid rgba(255,255,255,0.3);">
+          See Today's Deals ✨
+        </a>
+      </div>
+    </section>
+
+    <!-- Trust bar -->
+    <div class="trust-bar">
+      <div class="container">
+        <div class="trust-item"><span class="trust-icon">🚚</span> Free delivery over ₦15k</div>
+        <div class="trust-item"><span class="trust-icon">⏱️</span> Same-day Abuja delivery</div>
+        <div class="trust-item"><span class="trust-icon">🔒</span> Secure Paystack checkout</div>
+        <div class="trust-item"><span class="trust-icon">🔄</span> Easy returns</div>
+        <div class="trust-item"><span class="trust-icon">💬</span> WhatsApp support</div>
+      </div>
+    </div>
+
+    <!-- Demo test card -->
+    <div class="demo-card">
+      <h3>🧪 Test the cart badge</h3>
+      <p style="color:var(--color-text-muted)">Click to test the orange badge pop animation on the cart icon above.</p>
+      <div class="demo-btns">
+        <button class="btn btn-action" onclick="addDemo()">+ Add Item</button>
+        <button class="btn btn-secondary" onclick="clearDemo()">Clear Cart</button>
+      </div>
+      <div class="demo-hint">Watch the 🛒 badge in the header and bottom tab bar</div>
+    </div>
+
+  </main>
+
+  <!-- ── BOTTOM TAB BAR — mobile only ───────────────────────── -->
+  <nav class="bottom-nav" aria-label="Main navigation">
+    <div class="bottom-nav-items">
+      <a href="index.html" class="bottom-nav-item active" aria-label="Home">
+        <span class="bottom-nav-icon">🏠</span>
+        <span class="bottom-nav-label">Home</span>
+      </a>
+      <a href="pages/shop.html" class="bottom-nav-item" aria-label="Shop">
+        <span class="bottom-nav-icon">🏪</span>
+        <span class="bottom-nav-label">Shop</span>
+      </a>
+      <button class="bottom-nav-item" aria-label="Search"
+        onclick="document.querySelector('.header-search-toggle').click()">
+        <span class="bottom-nav-icon">🔍</span>
+        <span class="bottom-nav-label">Search</span>
+      </button>
+      <a href="#" class="bottom-nav-item" aria-label="Orders">
+        <span class="bottom-nav-icon">📦</span>
+        <span class="bottom-nav-label">Orders</span>
+      </a>
+      <a href="pages/cart.html" class="bottom-nav-item" aria-label="Cart">
+        <span class="bottom-nav-icon" style="position:relative;display:inline-block;">
+          🛒
+          <span class="bottom-nav-badge" data-count="0">0</span>
+        </span>
+        <span class="bottom-nav-label">Cart</span>
+      </a>
+    </div>
+  </nav>
+
+  <script src="js/mobile-nav.js"></script>
+  <script>
+    let _count = 0;
+
+    function addDemo() {
+      _count++;
+      const cart = JSON.parse(localStorage.getItem('bcm_cart') || '[]');
+      cart.push({ id: Date.now(), name: 'Demo Item', qty: 1, price: 1500 });
+      localStorage.setItem('bcm_cart', JSON.stringify(cart));
+      window.updateCartBadge(_count);
+    }
+
+    function clearDemo() {
+      _count = 0;
+      localStorage.removeItem('bcm_cart');
+      window.updateCartBadge(0);
+    }
+
+    /* Category chip active state */
+    document.querySelectorAll('.category-chip').forEach(chip => {
+      chip.addEventListener('click', function () {
+        document.querySelectorAll('.category-chip').forEach(c => c.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+  </script>
+
+</body>
+</html>
